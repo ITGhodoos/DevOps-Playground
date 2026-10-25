@@ -27,7 +27,7 @@ i edited /etc/fstab file of my nodes wtih nano and deleted the swap line, then r
 i tweaked /etc/modules-load.d/containerd.conf and added "overlay" & "br_netfilter" to the file so it can provide bridge networking between nodes
 after that i loaded "overlay" and "br_netfilter" with the "modeprobe" command
 
-### step3: allow node bridge networking on iptables
+### step 3: allow node bridge networking on iptables
 i added these rules to /etc/sysctl.d/kubernetes.conf so the firewall may allow the traffics between nodes to passthrough:
 
 ```bash
