@@ -1,4 +1,4 @@
-# day0:
+# day0
 
 ## installing Kubernetes with kubeadm
 
@@ -109,7 +109,7 @@ cluster is up and running
 
 ## step11:initiating kubectl
 
-i used `export KUBECONFIG=/etc/kubernetes/admin.conf` to generate kubeconfig file for my kubectl, but unfortunately it will stop working after a reboot since it will write the configuration to your "~/.bashrc", so i created a .kube directory on my root home directory(since i only want root to have access to the cluster)
+i used `export KUBECONFIG=/etc/kubernetes/admin.conf` to generate kubeconfig file for my kubectl, but unfortunately it will stop working after a reboot since it will write the configuration to your ".bashrc", so i created a .kube directory on my root home directory(since i only want root to have access to the cluster)
 and copied admin.conf file from "/etc/Kubernetes" directory to "~/.kube/config"
 finally i changed the ownership of the file to root user
 
