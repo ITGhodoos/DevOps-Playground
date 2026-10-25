@@ -1,4 +1,4 @@
-# day0
+# day 0
 
 ## installing Kubernetes with kubeadm
 
@@ -67,7 +67,7 @@ to install Kubernetes components on my nodes
 ```
 #### ERRROR: i made an minor error on this stage, "kubectl" is not required on worker nodes, unless you want to be able to manage your cluster on your worker nodes, "kubeadm" and "kubelet" is only required on worker nodes, the rest will be automatically installed after joining your worker node to your cluster
 
-### step7: pulling Kubernetes components images
+### step 7: pulling Kubernetes components images
 `sudo kubeadm config images pull`
 it didn't permit me to do it due to Kubernetes access restriction for iran so i used `curl -x` and `sudo env` and `export` to use my proxy connection for it, it didn't work again, apparently kubeadm doesnt like to use any environment variable for proxies, so i start to research on alternative solutions.
 i tried DOH(DNS Over HTTPS) Providers but it didn't work. i am looking towards "redsocks" and "tun2socks" as a solution, right now im trying to learn tun2socks configuration to imply on my nodes
@@ -94,20 +94,20 @@ basically a typo error. tun2socks reads "-device" as "-d" "evice"; that is where
 i applied this new command to start proxy connection and it worked. tun interface turned up and "evice" was gone
 now back to our main topic.
 
-## step8: initializing kubernetes cluster on master node
+## step 8: initializing kubernetes cluster on master node
 
 since its a home environment cluster and my hardware resource is limited i didn't set up any reverse proxy server for my cluster; so i used my master node as my api server. and used 10.244.0.0/16 network for my pod networking.
 
-## step9: flannel
+## step 9: flannel
 
 i opened GitHub page for flannel and copied it kubectl apply command for applying flannel manifest to my flannel.
 
-## step10: joining nodes
+## step 10: joining nodes
 
 after tweaking tun2socks solution on my worker nodes it finally was able to pull images for flannel and finally my worker nodes joined to my cluster
 cluster is up and running
 
-## step11:initiating kubectl
+## step 11: initiating kubectl
 
 i used `export KUBECONFIG=/etc/kubernetes/admin.conf` to generate kubeconfig file for my kubectl, but unfortunately it will stop working after a reboot since it will write the configuration to your ".bashrc", so i created a .kube directory on my root home directory(since i only want root to have access to the cluster)
 and copied admin.conf file from "/etc/Kubernetes" directory to "~/.kube/config"
