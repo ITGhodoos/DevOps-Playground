@@ -1,0 +1,9 @@
+DevOps Playground Program
+
+
+Week 1: Kubernetes
+
+day 0: install Kubernetes cluster
+
+day 1: write a simple manifest for applying an nginx pod
+- it should be in service and show up nginx page when using curl command
