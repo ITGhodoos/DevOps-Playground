@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  namespace: k8s-playground
+  labels:
+    app: nginx
+    app.kubernetes.io/component: frontend
+spec:
+  containers:
+  - name: nginx-test
+    image: nginx:alpine
+    ports:
+     -  containerPort: 80
