@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db-pod
+  namespace: k8s-playground
+  labels:
+    app: app-db
+    app.kubernetes.io/component: database
+spec:
+  containers:
+  - name: database-test
+    image: mysql:latest
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: "123"
+    ports:
+     -  containerPort: 3306
