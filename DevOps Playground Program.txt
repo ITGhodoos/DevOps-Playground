@@ -7,3 +7,5 @@ day 0: install Kubernetes cluster
 
 day 1: write a simple manifest for applying an nginx pod
 - it should be in service and show up nginx page when using curl command
+
+day 2: write a pod manifest which includes init container on it, the init container job is to wait for the MySQL container to load up and expose its 3306 port and then load up nginx container
