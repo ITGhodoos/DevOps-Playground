@@ -8,10 +8,10 @@ metadata:
     app.kubernetes.io/component: database
 spec:
   containers:
-  - name: database-test
-    image: mysql:latest
-    env:
-    - name: MYSQL_ROOT_PASSWORD
-      value: "123"
-    ports:
-     -  containerPort: 3306
+    - name: database-test
+      image: mysql:latest
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "123"
+      ports:
+        - containerPort: 3306

@@ -1,4 +1,4 @@
-# day 1
+# Day 1
 
 ## Creating a Pod manifest and deploy it on K8S cluster
 
