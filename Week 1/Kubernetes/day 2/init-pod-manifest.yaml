@@ -12,4 +12,4 @@ spec:
   initContainers:
   - name: mysql-check-port
     image: busybox:latest
-    command: ['/bin/sh', '-c', 'until nc -z db-pod 3306; do echo "Waiting for MYSQL"; sleep 2; done']
+    command: ['/bin/sh', '-c', 'until nc -z 10.244.2.6 3306; do echo "Waiting for MYSQL"; sleep 2; done']
