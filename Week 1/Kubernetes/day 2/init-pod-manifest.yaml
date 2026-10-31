@@ -5,10 +5,11 @@ metadata:
   namespace: k8s-playground
 spec:
   containers:
-  initContainers:
-    image: busybox:latest
-    command: ['/bin/sh' '-c', 'nc -z db-pod 3306' 'if echo $?', 'done']
-    image: nginx:alpine
   - name: frontend
-    containerPort:
-      Port: 80
+    image: nginx:alpine
+    ports:
+    - containerPort: 80
+  initContainers:
+  - name: mysql-check-port
+    image: busybox:latest
+    command: ['/bin/sh', '-c', 'until nc -z db-pod 3306; do echo "Waiting for MYSQL"; sleep 2; done']
