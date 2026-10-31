@@ -4,12 +4,21 @@ metadata:
   namespace: k8s-playground
   name: frontend-deployment
   labels:
-    app.kubernetes.io/component: frontend
-    app: nginx
+    app: frontend
 spec:
-  containers:
-  - name: frontend
-    image: nginx:alpine
-    imagePullPolicy: IfNotPresent
-    ports:   
-    - containerPort: 80
+  selector:
+    matchLabels:
+      app: nginx
+      app.kubernetes.io/component: frontend
+  template:
+    metadata:
+      labels:
+        app: nginx
+        app.kubernetes.io/component: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: nginx:alpine
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
