@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: k8s-playground
+  name: frontend-deployment
+  labels:
+    app.kubernetes.io/component: frontend
+    app: nginx
+spec:
+  containers:
+  - name: frontend
+    image: nginx:alpine
+    imagePullPolicy: IfNotPresent
+    ports:   
+    - containerPort: 80
