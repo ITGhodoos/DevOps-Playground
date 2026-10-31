@@ -7,7 +7,7 @@ spec:
   containers:
   initContainers:
     image: busybox:latest
-    command: ['/bin/sh' '-c', 'nc -z 10.244.2.2 3306' 'if echo $?', 'done']
+    command: ['/bin/sh' '-c', 'nc -z db-pod 3306' 'if echo $?', 'done']
     image: nginx:alpine
   - name: frontend
     containerPort:
