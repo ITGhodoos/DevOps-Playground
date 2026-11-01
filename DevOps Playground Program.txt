@@ -12,3 +12,5 @@ day 2: write a pod manifest which includes init container on it, the init contai
 
 
 day 3: write a deployment pod on nginx
+
+day 4: implement probes, revisioning,
