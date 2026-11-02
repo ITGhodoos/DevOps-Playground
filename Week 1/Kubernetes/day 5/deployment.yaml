@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kubernetes.io/change-cause: added probes, changed the image back to alpine
+  namespace: k8s-playground
+  name: frontend-deployment
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+      app.kubernetes.io/component: frontend
+  template:
+    metadata:
+      labels:
+        app: nginx
+        app.kubernetes.io/component: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: nginx:alpine
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        livenessProbe:
+          exec:
+            command: [sh, -c, "ping $POD_IP"]
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        ports:
+        - containerPort: 80
