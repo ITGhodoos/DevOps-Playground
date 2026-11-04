@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kubernetes.io/change-cause: swaped the liveness probe with readiness probe.
+    kubernetes.io/change-cause: added requests for hpa
   namespace: k8s-playground
   name: frontend-deployment
   labels:
@@ -16,8 +16,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-    maxSurge: 1
-    maxUnavailable: 1
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -40,3 +40,10 @@ spec:
           failureThreshold: 3
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
