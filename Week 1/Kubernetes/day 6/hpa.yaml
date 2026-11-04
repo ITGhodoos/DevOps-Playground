@@ -1,0 +1,25 @@
+apiVersion: autoscaling/v2
+kind: HorizontalAutoScaler
+metadata:
+  name: frontend-hpa
+  namespace: k8s-playground
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend-deployment
+  minReplicas: 2
+  maxReplicas: 6
+  metrics:
+  - type: resource
+    resource:
+      name: cpu
+      target:
+        type: utizilization
+        averageUtilization: 60
+  - type: resource
+    resource:
+      name: memory
+      target:
+        type: utilization
+        acerageUtilization: 60

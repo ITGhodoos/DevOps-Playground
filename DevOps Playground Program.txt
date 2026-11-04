@@ -16,3 +16,5 @@ day 3: write a deployment pod on nginx
 day 4: implement revisioning and replicas
 
 day 5: implement probes to deployment manifest.
+
+day 6: rewrite default update strategy and implement hpa to a deployment and test the functionality of hpa
