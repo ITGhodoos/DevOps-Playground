@@ -1,5 +1,5 @@
 apiVersion: autoscaling/v2
-kind: HorizontalPodAutoScaler
+kind: HorizontalPodAutoscaler
 metadata:
   name: frontend-hpa
   namespace: k8s-playground
@@ -22,4 +22,4 @@ spec:
       name: memory
       target:
         type: utilization
-        acerageUtilization: 60
+        averageUtilization: 60
