@@ -7,6 +7,6 @@ spec:
   restartPolicy: Never
   containers:
   - name: load-generator
-    containerImage: busybox:latest
+    Image: busybox:latest
     imagePullPolicy: IfNotPresent
     command: [sh, -c, "while true; do wget -q -O- http://frontend-service.k8s-playground.svc.cluster.local; done"]
