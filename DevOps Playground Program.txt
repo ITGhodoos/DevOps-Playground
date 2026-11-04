@@ -18,3 +18,5 @@ day 4: implement revisioning and replicas
 day 5: implement probes to deployment manifest.
 
 day 6: rewrite default update strategy and implement hpa to a deployment and test the functionality of hpa
+
+day 7: write a headless service manifest & test it on a statefulset.
