@@ -1,5 +1,5 @@
 apiVersion: autoscaling/v2
-kind: HorizontalAutoScaler
+kind: HorizontalPodAutoScaler
 metadata:
   name: frontend-hpa
   namespace: k8s-playground
