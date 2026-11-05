@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: statefulset-mysql
+  namespace: k8s-playground
+  label:
+    app: statefulset-mysql
+spec:
+  serviceName: "statefulheadless-service"
+  replicas: 2
+  selector:
+    matchLabels:
+      app: statefulset-mysql
+    template:
+      metadata:
+        labels:
+          app: statefulset-mysql
+      spec:
+        containers:
+          - name: mysql
+            image: mysql:latest
+            imagePullPolicy: IfNotPresent
+            livenessProbe:
+              tcpSocket:
+                port: 3306
+                initialDelaySeconds: 10
+                periodSeconds: 5
+                successThreshold: 1
+                failureThreshold: 3
+            redinessProbe:
+              exec:
+                command:
+                  - sh
+                  - -c
+                  - "mysqladmin ping -h localhost"
+                initialDelaySeconds: 10
+                periodSeconds: 5
+                successThreshold: 1
+                failureThreshold: 3
+            ports:
+              - containerPort: 3306
+                name: mysql
+            env:
+              - name: MYSQL_ROOT_PASSWORD
+                value: "rootpassword"
+            volumeMounts:
+              - name: mysql-persistent-storage
+                mountPath: /var/lib/mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: statefulheadless-service
+  namespace: k8s-playground
+spec:
+  clusterIP: None
+  selector:
+    app: statefulset-mysql
+  ports:
+  - port: 3306
+    targetPort: 3306
