@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: statefulset-mysql
+  name: statefulset-nginx
   namespace: k8s-playground
   labels:
-    app: statefulset-mysql
+    app: statefulset-nginx
 spec:
   serviceName: statefulheadless-service
   replicas: 2
 
   selector:
     matchLabels:
-      app: statefulset-mysql
+     app: statefulset-nginx
 
   template:
     metadata:
       labels:
-        app: statefulset-mysql
+        app: statefulset-nginx
     spec:
       containers:
-        - name: mysql
-          image: mysql:latest
+        - name: nginx
+          image: nginx:alpine
           imagePullPolicy: IfNotPresent
 
           livenessProbe:
             tcpSocket:
-              port: 3306
+              port: 80
             initialDelaySeconds: 10
             periodSeconds: 5
             successThreshold: 1
@@ -33,36 +33,14 @@ spec:
 
           readinessProbe:
             exec:
-              command:
-                - sh
-                - -c
-                - mysqladmin ping -h localhost -uroot -p"$MYSQL_ROOT_PASSWORD"
+              command: [ sh, -c, curl localhost:80]
             initialDelaySeconds: 10
             periodSeconds: 5
             successThreshold: 1
             failureThreshold: 3
 
           ports:
-            - containerPort: 3306
-              name: mysql
-
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: "rootpassword"
-
-          volumeMounts:
-            - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql
-
-  volumeClaimTemplates:
-    - metadata:
-        name: mysql-persistent-storage
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 2Gi
+            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
@@ -72,7 +50,7 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    app: statefulset-mysql
+    app: statefulset-nginx
   ports:
-    - port: 3306
-      targetPort: 3306
+    - port: 80
+      targetPort: 80
