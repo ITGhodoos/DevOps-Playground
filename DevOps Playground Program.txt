@@ -20,3 +20,8 @@ day 5: implement probes to deployment manifest.
 day 6: rewrite default update strategy and implement hpa to a deployment and test the functionality of hpa
 
 day 7: write a headless service manifest & test it on a statefulset.
+
+
+Week 2: Kubernetes
+
+day 1: write a cluster ip & node port, test the functionality of node port.
