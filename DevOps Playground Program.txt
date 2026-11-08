@@ -27,3 +27,9 @@ Week 2: Kubernetes
 day 1: write a cluster ip service manifest.
 
 day 2: wrte a node port service manifest.
+
+
+
+Week ##: Gitlab
+
+day ##: create a custom cluster role binding for gitlab agent accessing kubernetes cluster.
