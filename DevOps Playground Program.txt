@@ -28,6 +28,12 @@ day 1: write a cluster ip service manifest.
 
 day 2: wrte a node port service manifest.
 
+day 3: installing metal lb
+
+day 4: write down ingress
+
+day 5: install nginx-ingress controller
+
 
 
 Week ##: Gitlab
