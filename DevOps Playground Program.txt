@@ -35,6 +35,18 @@ day 4: write down ingress manifest
 day 5: install nginx-ingress controller
 
 
+week 3: Kubernetes
+
+day 1: create cluster role & cluster role binding for cluster-admin user to access the cluster
+
+day 2: generate kubeconfig file for cluster-admin user to access cluster from wsl 2 ubuntu
+
+day 3: make a static storage provisioning
+
+day 4: make a dynamic storage provisioning / install nfs provisioner
+
+day 5: helm
+
 
 Week ##: Gitlab
 
