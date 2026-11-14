@@ -37,9 +37,9 @@ day 5: install nginx-ingress controller
 
 week 3: Kubernetes
 
-day 1: create a role & role binding for cluster-user on wsl 2 and cluster role & cluster role binding for cluster-admin user, create .kube/config file for each and gain them access to cluster via wsl 2
+day 1: create a role & role binding for cluster-user on wsl 2
 
-day 2: generate kubeconfig file for cluster-admin user to access cluster from wsl 2 ubuntu
+day 2: cluster role & cluster role binding for cluster-admin user & generate .kube/config file for both users connecting from wsl 2
 
 day 3: make a static storage provisioning
 
