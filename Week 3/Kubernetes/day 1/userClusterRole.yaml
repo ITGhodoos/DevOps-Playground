@@ -2,7 +2,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: user-clusterrole
-rule:
+rules:
 - apiGroups: [""]
   resources: ["nodes", "namespaces", "persistentvolumes", "secrets"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses"]
   verbs: ["get", "watch", "list"]
