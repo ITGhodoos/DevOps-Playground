@@ -3,8 +3,8 @@ kind: ClusterRoleBinding
 metadata:
   name: user-cluster-read-access
 subjects:
-- kind: Group
-  name: cluster-access
+- kind: User
+  name: cluster-user
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
