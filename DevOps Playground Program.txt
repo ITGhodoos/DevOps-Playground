@@ -41,7 +41,7 @@ day 1: create a role & role binding for cluster-user on wsl 2
 
 day 2: cluster role & cluster role binding for cluster-admin user & generate .kube/config file for both users connecting from wsl 2
 
-day 3: make a static storage provisioning
+day 3: create a service account and give access to an application attempting to access cluster resources
 
 day 4: make a dynamic storage provisioning / install nfs provisioner
 
