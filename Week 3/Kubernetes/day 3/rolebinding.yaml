@@ -5,7 +5,7 @@ metadata:
   namespace: k8s-playground
 subjects:
 - kind: ServiceAccount
-  name: app-serviceaccount
+  name: app-service-account
   namespace: k8s-playground
 roleRef:
   kind: Role
